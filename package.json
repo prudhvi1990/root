@@ -2,10 +2,10 @@
   "name": "heloapp",
   "version": "1.0.0",
   "description": "simple app",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
     "express": "^4.15.3",
-    "expressjs": "^1.0.1"
+    
   },
   "devDependencies": {},
   "scripts": {
