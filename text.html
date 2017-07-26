@@ -1,0 +1,54 @@
+<html>
+<head>
+<script type="text/javascript">
+function getRawSourceCode() {
+var url=document.getElementById('urlValue').value;
+var iframe=document.getElementById('iframe');
+//document.getElementById('iframe').src=window.open(,url);
+var newwin=window.open(url);
+
+newwin.document.load = function () {
+var html=newwin.document.body.innerHTML;
+newwin.close();
+alert(html) ;
+}
+
+
+
+
+
+iframe.onload= function () {
+
+ var doc = iframe.contentDocument || iframe.contentWindow.document;
+
+        // find the target in the iframe content
+        var target = doc.getElementById("target");
+        target.innerHTML = "Found It!";
+alert(document.getElementById('iframe').contentWindow.document.body.innerHTML);
+document.getElementById('loadSource').innerHTML= document.getElementById('iframe').contentWindow.document.body.innerHTML;
+;
+}
+}
+
+
+window.onclick=function() {
+if(window.getSelection().toString() !="" && window.getSelection().toString() !=" "){
+var selectedString = window.getSelection().toString().trim();
+var html= document.getElementById('text').innerHTML;
+var newhtml= html.replace(new RegExp(selectedString,'g'), '<font color="red">'+selectedString+'</font>')
+document.getElementById('text').innerHTML ="";
+document.getElementById('text').innerHTML =newhtml;
+}
+}
+function selectedText() {
+
+
+}
+</script>
+</head>
+<input type="Text" id="urlValue"></input>
+<button value="RawData" onClick="getRawSourceCode()" target=></button>
+<textarea id="loadSource" onselect="selectedText()">hello <font color="yellow">how</font>  are you hello </textarea>
+<p id="text">hello how how how how   are you hello </p>
+<iframe id="iframe" name="iframe"></iframe>
+</html>
